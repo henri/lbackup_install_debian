@@ -1,0 +1,8 @@
+*.git
+*._
+*.DS_Store
+*.AppleDouble
+*.gitignore
+./lbackup_core/README.md
+./lbackup_core/LICENSE.txt
+

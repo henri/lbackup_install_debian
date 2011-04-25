@@ -1,0 +1,13 @@
+Package: lbackup
+Version: XXXXXXXXXXX
+Section: utils
+Priority: optional
+Architecture: all
+Essential: no
+Depends: bash
+Recommends: ruby, rsync, tcsh, tee, python
+Installed-Size: 1024
+Maintainer: Lucid Information Systems [http://www.lucidsystems.org]
+Description: LBackup is an archiving, hard-link wrapper for rsync aimed at system administrators.
+
+

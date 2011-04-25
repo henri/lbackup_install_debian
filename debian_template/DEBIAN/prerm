@@ -1,0 +1,33 @@
+#!/bin/bash
+
+cd /usr/local/sbin/
+if [ $? == 0 ] ; then
+    rm lmail lcd lbackup
+fi
+
+cd /usr/local/libexec/
+if [ $? == 0 ] ; then
+    rm -R lbackup lbackup1 lbackup1001
+fi
+
+cd /
+if [ $? == 0 ] ; then
+    rm -R lbackup
+fi
+
+cd /etc/
+if [ $? == 0 ] ; then
+    rm -R lbackup
+fi
+
+cd /usr/share/doc/
+if [ $? == 0 ] ; then
+    rm -R lbackup
+fi
+
+cd /usr/share/man/man1/
+if [ $? == 0 ] ; then
+    rm -R lbackup.1
+fi
+
+
