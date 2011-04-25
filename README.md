@@ -11,6 +11,8 @@ In order to build an .deb installer follow the steps outlined below :
  - Ensure you are have super user privileges on your system.
  - Ensure that the "lbackup-core" and "lbackup_install_debian" share the same parent directory. 
  - Execute the "build.bash" script and pass the script the version number for this build (eg: './build.bash 0.9.8r5')
+ 
+You will be able to collect your tar.gz .deb installer and source files within the build_output directory which will be generated during the build process.
 
 Further information including basic and more advanced usage is available from the following URL: 
 <http://www.lbackup.org>
