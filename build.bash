@@ -108,7 +108,6 @@ fi
 
 
 # tar the backup core using the excludes file (to remove various parts)
-echo "$excludes_file_absolute_path"
 cd "${relaitive_parent_directory_contianing_lbackup_core_source}"
 tar -czvf "${output_tar_file_source_absolute_path}" -X "${excludes_file_absolute_path}" "${input_lbackup_core_directory_name}" 
 if [ $? != 0 ] ; then
