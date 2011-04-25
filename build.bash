@@ -42,10 +42,11 @@ fi
 
 # additional settings from arguments
 build_version="${1}"
-source_version_direcotry_absolute="${script_directory}/${build_source_dir_name}/lbackup_${build_version}_all"
+source_version_direcotry_name="lbackup_${build_version}_all"
+source_version_direcotry_absolute="${script_directory}/${build_source_dir_name}/${source_version_direcotry_name}"
 source_version_DEBIAN_directory_absolute="${source_version_direcotry_absolute}/DEBIAN"
 source_debian_control_file_absolute_path="${source_version_DEBIAN_directory_absolute}/${debian_control_file_name}"
-source_debian_package_absolute="${script_directory}/${build_source_dir_name}/lbackup_${build_version}_all.deb"
+source_debian_package_name="lbackup_${build_version}_all.deb"
 output_debian_package_arachive_absolute="${script_directory}/${build_output_dir_name}/lbackup_${build_version}_all.deb.tar.gz"
 output_debian_source_archive_absolute="${script_directory}/${build_output_dir_name}/lbackup_${build_version}_deb_source.tar.gz"
 
@@ -167,18 +168,22 @@ fi
 cd "${script_directory}"
 
 # tar up the source directory and the .deb installer and place these into the build_output directory for collection
-tar -czf "${output_debian_source_archive_absolute}" "${source_version_direcotry_absolute}"
+cd "${script_directory}/${build_source_dir_name}"
+tar -czf "${output_debian_source_archive_absolute}" "${source_version_direcotry_name}"
 if [ $? != 0 ] ; then 
     echo "    ERROR!: Generating the archived .deb installer within the build_output directory"
     exit -1
 fi
+cd "${script_directory}"
 
 # tar up the .deb installer within the build_output directory for collection
-tar -czf "${output_debian_package_arachive_absolute}" "${source_debian_package_absolute}"
+cd "${script_directory}/${build_source_dir_name}"
+tar -czf "${output_debian_package_arachive_absolute}" "${source_debian_package_name}"
 if [ $? != 0 ] ; then 
     echo "    ERROR!: Generating the archived source for the .deb installer within the build_output directory"
     exit -1
 fi
+cd "${script_directory}"
 
 echo ""
 echo "---------------------------------------------------------------------------------"
