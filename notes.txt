@@ -1,2 +1,0 @@
-Online Build Instructions : 
-http://www.lbackup.org/developer/debian_build_notes

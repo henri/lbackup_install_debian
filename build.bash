@@ -14,7 +14,9 @@ rm "${tmp_build_file}"
 output_lbackup_core_tar_archive_name="lbackup_core.tar.gz"
 input_lbackup_core_directory_name="lbackup_core"
 relaitive_parent_directory_contianing_lbackup_core_source="../"
-script_directory=`dirname "${0}"`
+script_directory_realitive=`dirname "${0}"`
+cd "${script_directory_realitive}"
+script_directory=`pwd`
 excludes_file_name="exclude.txt"
 debian_control_file_name="control"
 
@@ -32,7 +34,7 @@ debian_template_control_file_absolute_path="${debian_template_dir_absolute_path}
 
 # check that a version has been provided for this build (pretty lax)
 num_arguments=$#
-if ! [ $num_arguments != 1 ] ; then
+if [ $num_arguments != 1 ] ; then
     echo "ERROR! : You must specify the version build number."
     echo "         Usage : ./build.bash \"0.9.8r5\""
     exit -1
@@ -106,6 +108,7 @@ fi
 
 
 # tar the backup core using the excludes file (to remove various parts)
+echo "$excludes_file_absolute_path"
 cd "${relaitive_parent_directory_contianing_lbackup_core_source}"
 tar -czvf "${output_tar_file_source_absolute_path}" -X "${excludes_file_absolute_path}" "${input_lbackup_core_directory_name}" 
 if [ $? != 0 ] ; then
@@ -142,7 +145,7 @@ fi
 cd "${script_directory}"
 
 # copy over the build files to the package build directory
-cp -r "${script_directory}/${build_source_dir_name}/${input_lbackup_core_directory_name}/*" "${source_version_direcotry_absolute}/"
+cp -r "${script_directory}/${build_source_dir_name}/${input_lbackup_core_directory_name}/"* "${source_version_direcotry_absolute}/"
 if [ $? != 0 ] ; then 
     echo "    ERROR!: Error copying over the lbackup source data to the lbackup source files within the source directory!"
     exit -1
@@ -154,9 +157,6 @@ if [ $? != 0 ] ; then
     echo "    ERROR!: Setting appropriate permissions on the build files"
     exit -1
 fi
-
-
-exit 0
 
 # build the .deb installer package
 cd "${script_directory}/${build_source_dir_name}"
