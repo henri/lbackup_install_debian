@@ -118,7 +118,7 @@ chown 755 "${change_directory_component_link_source}"
 if ! [ -d /lbackup ] ; then
     if [ -d /etc/lbackup ] ; then
         ln -s /etc/lbackup /lbackup
-        chown 755 "${/lbackup}"
+        chown 755 /lbackup"
     fi
 fi
 
