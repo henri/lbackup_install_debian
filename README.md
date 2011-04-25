@@ -6,7 +6,7 @@ Use this project to build the .deb installer for LBackup.
 
 In order to build an .deb installer follow the steps outlined below : 
  
- - Ensure that you have checked out the version of lbackup core which you wish to build : <http://github.com/henri/lbackup-core>
+ - Ensure that you have checked out the version of lbackup core which you wish to build : <http://github.com/henri/lbackup_core>
  - Ensure that you have the dpkg packaging tools installed on your system.
  - Ensure you are have super user privileges on your system.
  - Ensure that the "lbackup-core" and "lbackup_install_debian" share the same parent directory. 
