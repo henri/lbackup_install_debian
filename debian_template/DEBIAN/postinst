@@ -86,9 +86,12 @@ fi
 
 # Install Compatibility Version Link
 ln -s "${full_install_dir_source}" "${full_compatibility_version_link_name}"
+chown 755 "${full_install_dir_source}"
 
 # Install Current Version Link
 ln -s "${full_compatibility_version_link_name}" "${full_current_version_link_name}"
+chown 755 "${full_compatibility_version_link_name}"
+
 
 ################## Create Executable  Links ################
 
@@ -101,18 +104,21 @@ fi
 
 # Install Backup Component (Executable)
 ln -s "${backup_component_link_source}" "${full_backup_component_name_dest}"
+chown 755 "${backup_component_link_source}"
 
 # Install Email Component (Executable)
 ln -s "${email_component_link_source}" "${full_email_component_name_dest}"
+chown 755 "${email_component_link_source}"
 
 # Install Change Directory Component (Executable)
 ln -s "${change_directory_component_link_source}" "${full_change_directory_component_link_dest}"
-
+chown 755 "${change_directory_component_link_source}"
 
 ##### Create the (Example) Settings Sybolic Link (Root Directory) #####
 if ! [ -d /lbackup ] ; then
     if [ -d /etc/lbackup ] ; then
         ln -s /etc/lbackup /lbackup
+        chown 755 "${/lbackup}"
     fi
 fi
 
